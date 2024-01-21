@@ -50,7 +50,7 @@ export default function Login() {
       });
       if (!signInData?.error) {
         router.refresh();
-        router.push("/login");
+        router.push("/");
       }
       // if (username === "test" && password === "test") {
       //   router.push("/login");
