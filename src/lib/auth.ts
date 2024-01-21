@@ -11,7 +11,7 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/login",
+    signIn: "/",
   },
   providers: [
     CredentialsProvider({
@@ -49,26 +49,25 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
-  //   callbacks:{
-  //     async jwt({token, user}){
-  //         //console.log(token, user)
-  //         if(user){
-  //             return{
-  //                 ...token,
-  //                 username: user.username
-  //             }
-  //         }
-  //         return token;
-  //     },
-  //     async session({session,token}){
-  //         return{
-  //             ...session,
-  //             user:{
-  //                 ...session.user,
-  //                 username: token.username
-  //             }
-  //         }
-
-  //     },
-  //  }
+  // callbacks: {
+  //   async jwt({ token, user }) {
+  //     console.log(token, user);
+  //     if (user) {
+  //       return {
+  //         ...token,
+  //         username: user.username,
+  //       };
+  //     }
+  //     return token;
+  //   },
+  //   async session({ session, token }) {
+  //     return {
+  //       ...session,
+  //       user: {
+  //         ...session.user,
+  //         username: token.username,
+  //       },
+  //     };
+  //   },
+  // },
 };

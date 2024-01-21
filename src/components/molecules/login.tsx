@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { InputField } from "../atoms/inputField";
+import { signIn } from "next-auth/react";
 
 export default function Login() {
   //Instantiate router
@@ -42,12 +43,23 @@ export default function Login() {
     //Try the credentials submitted
     try {
       //if successful push to home page
-      if (username === "test" && password === "test") {
+      const signInData = await signIn("credentials", {
+        redirect: false,
+        username,
+        password,
+      });
+      if (!signInData?.error) {
+        router.refresh();
         router.push("/login");
-      } else if (username !== "" && password !== "") {
+      }
+      // if (username === "test" && password === "test") {
+      //   router.push("/login");
+      else if (username !== "" && password !== "") {
         setMainError("INVALID CREDENTIALS!!");
       }
-    } catch (error: any) {}
+    } catch (error: any) {
+      console.log(error);
+    }
   };
 
   const handleInputChange = (field: any, value: any) => {
@@ -66,6 +78,44 @@ export default function Login() {
   return (
     <div className="flex justify-center ">
       <form onSubmit={onSubmit}>
+        {/* <div className="flex flex-col mt-3 mb-1"> */}
+        {/* <label className="text-white text-semibold text-base">Email</label>
+          <input
+            className={`p-2 w-80 rounded border-2 border-[#424549] focus:outline-none focus:border-indigo-500 text-black ${
+              usernameError ? "border-red-500 focus:border-red-500" : ""
+            }`}
+            name="email"
+            autoComplete="email"
+            placeholder="Email"
+            value={username}
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
+          {usernameError && (
+            <span className="text-red-600 font-bold text-sm p-1">
+              {usernameErrorMsg}
+            </span>
+          )}
+        </div>
+
+        <div className="flex flex-col mt-3 mb-1">
+          <label className="text-white text-semibold text-base">Password</label>
+          <input
+            className={`p-2 w-80 rounded border-2 border-[#424549] focus:outline-none focus:border-indigo-500 text-black ${
+              passwordError ? "border-red-500 focus:border-red-500" : ""
+            }`}
+            name="password"
+            placeholder="Password"
+            value={password}
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {passwordError && (
+            <span className="text-red-600 font-bold text-sm p-1">
+              {passwordErrorMsg}
+            </span>
+          )}
+        </div> */}
         <InputField
           label="username"
           isError={usernameError}
