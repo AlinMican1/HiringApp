@@ -6,7 +6,6 @@ import { DateTime } from "@/components/atoms/dateTime";
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  console.log(session);
   return (
     <div className="flex h-screen justify-center ">
       <div className=" outline rounded-md m-2 ">
