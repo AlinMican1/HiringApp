@@ -9,3 +9,4 @@ CREATE INVOCATION ERROR DO THIS:
 -npx prisma generate
 -npx prisma db push
 -close server and rerun
+- delete cookies is in application and delete all those cookies.
