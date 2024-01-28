@@ -4,6 +4,7 @@ import React, { ReactNode } from "react";
 interface ButtonConfig {
   btnText?: string;
   btnColor?: string;
+  btnTextColor?: string;
   onclick?: () => void;
   children?: ReactNode;
 }
@@ -11,6 +12,7 @@ interface ButtonConfig {
 export function ButtonNavBar({
   btnText,
   btnColor,
+  btnTextColor,
   onclick,
   children,
   ...props
@@ -20,13 +22,13 @@ export function ButtonNavBar({
       onClick={onclick}
       className={`${btnColor} 
     + flex relative text-[14px] 
-    min-h-[32px]  rounded rounded-md flex-col  
-    hover:bg-indigo-500  items-center duration-150`}
+    min-h-[32px] rounded rounded-md flex-col  
+    hover:bg-indigo-500 px-2 items-center duration-150`}
       {...props}
     >
-      <div className="">{children}</div>
+      <div className="px-2">{children}</div>
       <div>
-        <span className="text-textColor">{btnText}</span>
+        <span className={`${btnTextColor}`}>{btnText}</span>
       </div>
     </button>
   );
