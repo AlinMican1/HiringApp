@@ -76,9 +76,8 @@ export default function Login() {
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center  no-scrollbar">
       <form onSubmit={onSubmit}>
-       
         <InputField
           label="username"
           isError={usernameError}
